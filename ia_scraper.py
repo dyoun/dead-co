@@ -1,5 +1,8 @@
 import internetarchive
 import json
+import requests
+
+VIEWS_URL = "https://be-api.us.archive.org/views/v1/short/"
 
 
 def fetch_collection_items_details(collection_id, output_file):
@@ -9,16 +12,26 @@ def fetch_collection_items_details(collection_id, output_file):
             identifier = result['identifier']
             item = internetarchive.get_item(identifier)
 
-            views = item.metadata.get('downloads', 0)
-            favorites = item.metadata.get('num_favorites', 0)
             meta = item.metadata
-            meta['downloads'] = views + favorites
-            meta['num_favorites'] = favorites
+            views = get_views(identifier)
+            meta['views'] = views
+            meta['views_all_time'] = views.get(identifier).get('all_time')
+            meta['views_last_30day'] = views.get(identifier).get('last_30day')
+            meta['views_last_7day'] = views.get(identifier).get('last_7day')
 
-            print(json.dumps(item.metadata, ensure_ascii=False))
-            json.dump(item.metadata, f, ensure_ascii=False)
+            # meta['num_favorites'] = favorites
+
+            print(json.dumps(meta, ensure_ascii=False))
+            json.dump(meta, f, ensure_ascii=False)
             f.write('\n')
 
+
+def get_views(identifier):
+    url = VIEWS_URL + identifier
+    response = requests.get(url)
+    views = response.json()
+
+    return views
 
 if __name__ == '__main__':
     fetch_collection_items_details('DeadAndCompany', 'shows.jsonl')
