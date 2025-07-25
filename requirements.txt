@@ -1,0 +1,9 @@
+certifi==2025.7.14
+charset-normalizer==3.4.2
+idna==3.10
+internetarchive==5.5.0
+jsonpatch==1.33
+jsonpointer==3.0.0
+requests==2.32.4
+tqdm==4.67.1
+urllib3==2.5.0
