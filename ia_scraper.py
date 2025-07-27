@@ -19,7 +19,6 @@ def fetch_collection_items_details(collection_id, output_file):
             meta['views_last_30day'] = views.get(identifier).get('last_30day')
             meta['views_last_7day'] = views.get(identifier).get('last_7day')
             # meta['num_favorites'] = favorites
-            meta['url'] = f"https://archive.org/details/{meta['identifier']}"
 
             print(json.dumps(meta, ensure_ascii=False))
             json.dump(meta, f, ensure_ascii=False)
