@@ -19,7 +19,7 @@ python llm_client.py --load top_shows.jsonl
 ```
 
 ## Deep Dive
-[notebook.ipnyb](notebook.ipynb) scrapes information about [Dead & Co shows from archive.org](https://archive.org/details/DeadAndCompany) and then filters top 5 shows and outputs top_shows.jsonl.
+[notebook.ipnyb](notebook.ipynb) scrapes information about [Dead & Co shows from archive.org](https://archive.org/details/DeadAndCompany) and then filters top 5 shows and outputs [top_shows.jsonl](top_shows.jsonl).
 ```shell
 python ia_scraper.py
 ```
