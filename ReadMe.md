@@ -37,7 +37,7 @@ python ia_scraper.py
 ```
 
 A graph of views per show is also available in the notebook.
-![Shows by views](shows_by_views.png)
+![Shows by views](./shows_by_views.png)
 
 ## Sources
 * https://archive.org/developers/quick-start-pip.html
